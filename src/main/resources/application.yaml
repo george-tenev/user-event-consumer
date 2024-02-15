@@ -1,0 +1,17 @@
+server:
+  port: 8081
+spring:
+  kafka:
+    bootstrap-servers: localhost:29092
+    topic:
+      logins:
+        name: logins
+      logins-processed:
+        name: logins-processed
+    consumer:
+      group-id: logins-consumer
+      auto-offset-reset: earliest
+      
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
