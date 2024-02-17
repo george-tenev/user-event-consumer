@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class UserEventConsumerApplication {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(UserEventConsumerApplication.class, args);
 	}
 

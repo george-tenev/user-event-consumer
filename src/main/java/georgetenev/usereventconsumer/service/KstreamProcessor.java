@@ -14,8 +14,6 @@ public class KstreamProcessor {
     private KafkaTopicsConfig kafkaTopicsConfig;
 
     public void process(KStream<String, UserLogin> stream){
-
-        stream.to(kafkaTopicsConfig.getLoginsProcessedTopic());  
-
+        stream.to(kafkaTopicsConfig.getLoginsProcessedTopic());
     }
 }
