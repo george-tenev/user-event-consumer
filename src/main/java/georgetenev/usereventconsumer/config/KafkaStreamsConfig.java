@@ -43,6 +43,9 @@ public class KafkaStreamsConfig {
     @Value("${spring.kafka.consumer.auto-offset-reset}")
     private String autoOffsetReset;
 
+    @Value("${spring.kafka.application-id}")
+    private String applicationId;
+
     private final KstreamProcessor kstreamProcessor;
 
     public KafkaStreamsConfig(KstreamProcessor kstreamProcessor) {
@@ -52,11 +55,11 @@ public class KafkaStreamsConfig {
     @Bean(name = KafkaStreamsDefaultConfiguration.DEFAULT_STREAMS_CONFIG_BEAN_NAME)
     public KafkaStreamsConfiguration kStreamsConfig() {
         Map<String, Object> props = Map.of(
-            StreamsConfig.APPLICATION_ID_CONFIG, "streams-app",
-            StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress,
+            StreamsConfig.APPLICATION_ID_CONFIG, this.applicationId,
+            StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, this.bootstrapAddress,
             StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, StringSerde.class.getName(),
             StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, JsonSerde.class.getName(),
-            ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, autoOffsetReset
+            ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, this.autoOffsetReset
         );
 
         return new KafkaStreamsConfiguration(props);
@@ -65,8 +68,8 @@ public class KafkaStreamsConfig {
     @Bean
     public DefaultKafkaConsumerFactory<String, String> consumerFactory() {
         Map<String, Object> props = Map.of(
-            ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress,
-            ConsumerConfig.GROUP_ID_CONFIG, consumerGroupId,
+            ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, this.bootstrapAddress,
+            ConsumerConfig.GROUP_ID_CONFIG, this.consumerGroupId,
             ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName(),
             ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName()
         );

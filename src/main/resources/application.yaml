@@ -11,6 +11,8 @@ spring:
     consumer:
       group-id: logins-consumer
       auto-offset-reset: earliest
+    streams:
+      application-id: logins-processor
       
   jackson:
     serialization:
