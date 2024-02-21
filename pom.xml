@@ -12,6 +12,7 @@
 	<artifactId>user-event-consumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>user-event-consumer</name>
+	<packaging>jar</packaging>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
@@ -43,6 +44,19 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+						<configuration>
+							<classifier>spring-boot</classifier>
+							<mainClass>
+								georgetenev.usereventconsumer.UserEventConsumerApplication
+							</mainClass>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
