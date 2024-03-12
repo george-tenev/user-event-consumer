@@ -11,15 +11,17 @@ public class KafkaTopicsConfig {
 
     @Value(value = "${spring.kafka.topic.logins-processed.name}")
     private String loginsProcessedTopic;
+    @Value(value = "${spring.kafka.topic.daily-active-users.name}")
+    private String dailyActiveUsersTopic;
 
     @Bean
-    public NewTopic topicWith3Replicas() {
-        return TopicBuilder.name(loginsProcessedTopic)
-            .replicas(3)
+    public NewTopic DAUTopic() {
+        return TopicBuilder.name(dailyActiveUsersTopic)
+            .replicas(1)
             .build();
     }
 
-    public String getLoginsProcessedTopic() {
-        return loginsProcessedTopic;
+    public String getDailyActiveUsersTopic() {
+        return dailyActiveUsersTopic;
     }
 }

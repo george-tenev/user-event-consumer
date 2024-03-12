@@ -8,6 +8,8 @@ spring:
         name: logins
       logins-processed:
         name: logins-processed
+      daily-active-users:
+        name: daily-active-users
     consumer:
       group-id: logins-consumer
       auto-offset-reset: earliest
