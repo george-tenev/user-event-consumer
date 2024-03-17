@@ -6,10 +6,8 @@ spring:
     topic:
       logins:
         name: logins
-      logins-processed:
-        name: logins-processed
-      daily-active-users:
-        name: daily-active-users
+      transformed-logins:
+        name: transformed-logins
     consumer:
       group-id: logins-consumer
       auto-offset-reset: earliest
@@ -19,3 +17,7 @@ spring:
   jackson:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
+
+logging:
+  level:
+    root: INFO
